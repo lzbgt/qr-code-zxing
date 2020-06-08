@@ -78,6 +78,10 @@ int read_image(Ref<LuminanceSource> source, bool hybrid, string expected) {
     } else {
       binarizer = new GlobalHistogramBinarizer(source);
     }
+
+    // we use default hint as QR code
+    // but it can alse decode barcode
+    // DecodeHints hints(DecodeHints::QR_CODE_HINT);
     DecodeHints hints(DecodeHints::DEFAULT_HINT);
     hints.setTryHarder(try_harder);
     Ref<BinaryBitmap> binary(new BinaryBitmap(binarizer));
@@ -146,6 +150,7 @@ int read_image(Ref<LuminanceSource> source, bool hybrid, string expected) {
   return res;
 }
 
+// this is for testing perpose
 string read_expected(string imagefilename) {
   string textfilename = imagefilename;
   string::size_type dotpos = textfilename.rfind(".");
