@@ -65,7 +65,7 @@ set_target_properties(libzxing PROPERTIES PREFIX "")
 #     include_directories(${ICONV_INCLUDE_DIR})
 #     target_link_libraries(libzxing ${ICONV_LIBRARIES})
 # else()
-#     add_definitions(-DNO_ICONV=1)
+add_definitions(-DNO_ICONV=1)
 # endif()
 
 # Add OpenCV cli executable
@@ -87,7 +87,7 @@ file(GLOB_RECURSE ZXING_FILES
 link_directories(/usr/lib/)
 
 add_executable(zxing ${ZXING_FILES})
-target_link_libraries(zxing libzxing iconv)
+target_link_libraries(zxing libzxing)
 
 install(TARGETS zxing libzxing EXPORT zxing-targets
 	LIBRARY DESTINATION lib
